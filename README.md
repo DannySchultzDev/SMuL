@@ -16,5 +16,5 @@ Your lootlocker project must have Guest as its platform
 
 Use your game api key and leaderboard key on the SMuL object in Godot
 
-#Just a demo
+# Just a demo
 If you are looking to just see the demo in action, you can download it from my itch.io at https://waluigigoeswa.itch.io/smul
