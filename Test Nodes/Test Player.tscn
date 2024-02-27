@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://brqyrvm40aekh"]
+
+[ext_resource type="Script" path="res://Test Nodes/TestPlayer.cs" id="1_8ismi"]
+[ext_resource type="Texture2D" uid="uid://boj8b3anbf5w0" path="res://Other/Gorm.png" id="2_1g13e"]
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("label")]
+script = ExtResource("1_8ismi")
+label = NodePath("Player Pos Label")
+
+[node name="Gorm" type="Sprite2D" parent="."]
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("2_1g13e")
+
+[node name="Player Pos Label" type="Label" parent="."]
+offset_left = 70.0
+offset_top = -50.0
+offset_right = 470.0
+offset_bottom = 50.0
+vertical_alignment = 1

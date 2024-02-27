@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://dktdgm80dubn4"]
+
+[ext_resource type="Script" path="res://Test Nodes/HostButton.cs" id="1_bvup5"]
+[ext_resource type="Script" path="res://Test Nodes/MainMenuUI.cs" id="1_nancm"]
+[ext_resource type="Script" path="res://Test Nodes/ServersTree.cs" id="2_17wo2"]
+[ext_resource type="Script" path="res://Test Nodes/JoinButton.cs" id="2_yhpwc"]
+[ext_resource type="Script" path="res://Test Nodes/WaitForPlayersUI.cs" id="5_8ol2c"]
+[ext_resource type="PackedScene" uid="uid://cbw0olbn0vn1e" path="res://Test Nodes/Test Game.tscn" id="6_ho5q5"]
+
+[node name="Test Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main Menu UI" type="Control" parent="." node_paths=PackedStringArray("waitForPlayersUI")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_nancm")
+waitForPlayersUI = NodePath("../Wait For Players UI")
+
+[node name="Player Amount Dropdown" type="OptionButton" parent="Main Menu UI"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 190.0
+offset_bottom = 60.0
+tooltip_text = "How many players will you host?"
+item_count = 3
+selected = 0
+popup/item_0/text = "2 Player Game"
+popup/item_0/id = 0
+popup/item_1/text = "3 Player Game"
+popup/item_1/id = 1
+popup/item_2/text = "4 Player Game"
+popup/item_2/id = 2
+
+[node name="Lobby Name LineEdit" type="LineEdit" parent="Main Menu UI"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 10.0
+offset_right = 440.0
+offset_bottom = 60.0
+placeholder_text = "Lobby Name"
+
+[node name="Host Button" type="Button" parent="Main Menu UI" node_paths=PackedStringArray("lineEdit", "optionButton", "mainMenuUi")]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 10.0
+offset_right = 550.0
+offset_bottom = 60.0
+tooltip_text = "Press this to host a game."
+text = "Host"
+script = ExtResource("1_bvup5")
+lineEdit = NodePath("../Lobby Name LineEdit")
+optionButton = NodePath("../Player Amount Dropdown")
+mainMenuUi = NodePath("..")
+
+[node name="Join Button" type="Button" parent="Main Menu UI" node_paths=PackedStringArray("lineEdit", "mainMenuUi")]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 10.0
+offset_right = 660.0
+offset_bottom = 60.0
+tooltip_text = "Press this to join a game."
+text = "Join"
+script = ExtResource("2_yhpwc")
+lineEdit = NodePath("../Lobby Name LineEdit")
+mainMenuUi = NodePath("..")
+
+[node name="Servers Tree" type="Tree" parent="Main Menu UI" node_paths=PackedStringArray("lineEdit")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 660.0
+offset_bottom = 570.0
+tooltip_text = "Click on a game to join."
+columns = 3
+script = ExtResource("2_17wo2")
+lineEdit = NodePath("../Lobby Name LineEdit")
+
+[node name="Wait For Players UI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_8ol2c")
+testGame = ExtResource("6_ho5q5")
+
+[node name="Wait For Players Label" type="Label" parent="Wait For Players UI"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 410.0
+offset_bottom = 70.0
+vertical_alignment = 1
+
+[connection signal="button_down" from="Main Menu UI/Host Button" to="Main Menu UI/Host Button" method="_on_button_down"]
+[connection signal="button_down" from="Main Menu UI/Join Button" to="Main Menu UI/Join Button" method="_on_button_down"]
+[connection signal="cell_selected" from="Main Menu UI/Servers Tree" to="Main Menu UI/Servers Tree" method="cell_selected"]

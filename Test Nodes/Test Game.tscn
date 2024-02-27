@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbw0olbn0vn1e"]
+
+[ext_resource type="Script" path="res://Test Nodes/TestGame.cs" id="1_damwo"]
+[ext_resource type="PackedScene" uid="uid://brqyrvm40aekh" path="res://Test Nodes/Test Player.tscn" id="1_gx5hc"]
+
+[node name="Test Game" type="Node2D" node_paths=PackedStringArray("players", "playerIdLabel", "currentPlayerLabel", "lastRollLabel")]
+script = ExtResource("1_damwo")
+players = [NodePath("Player 1"), NodePath("Player 2"), NodePath("Player 3"), NodePath("Player 4")]
+playerIdLabel = NodePath("player Id Label")
+currentPlayerLabel = NodePath("current Player Label")
+lastRollLabel = NodePath("Last Roll Label")
+
+[node name="Player 1" parent="." instance=ExtResource("1_gx5hc")]
+position = Vector2(50, 50)
+playerId = 1
+
+[node name="Player 2" parent="." instance=ExtResource("1_gx5hc")]
+position = Vector2(50, 160)
+playerId = 2
+
+[node name="Player 3" parent="." instance=ExtResource("1_gx5hc")]
+position = Vector2(50, 270)
+playerId = 3
+
+[node name="Player 4" parent="." instance=ExtResource("1_gx5hc")]
+position = Vector2(50, 380)
+playerId = 4
+
+[node name="Instructions" type="Label" parent="."]
+offset_top = 440.0
+offset_right = 500.0
+offset_bottom = 490.0
+text = "When it is your turn, press SPACE to roll a D6.
+The first person to make it 25 spaces wins."
+
+[node name="player Id Label" type="Label" parent="."]
+offset_top = 515.0
+offset_right = 500.0
+offset_bottom = 540.0
+
+[node name="current Player Label" type="Label" parent="."]
+offset_top = 540.0
+offset_right = 500.0
+offset_bottom = 565.0
+
+[node name="Last Roll Label" type="Label" parent="."]
+offset_top = 565.0
+offset_right = 500.0
+offset_bottom = 590.0

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ppvboeudqd0"]
+
+[ext_resource type="Script" path="res://SMuL/Backend/SMuL.cs" id="1_7vwxf"]
+
+[node name="SMuL" type="Node"]
+script = ExtResource("1_7vwxf")
+developmentMode = true

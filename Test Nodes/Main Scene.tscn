@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpti1ixpxatnn"]
+
+[ext_resource type="PackedScene" uid="uid://dktdgm80dubn4" path="res://Test Nodes/Test Main Menu.tscn" id="1_1ygco"]
+[ext_resource type="PackedScene" uid="uid://5ppvboeudqd0" path="res://SMuL/SMuL.tscn" id="2_5idh8"]
+
+[node name="Main Scene" type="Node"]
+
+[node name="Test Main Menu" parent="." instance=ExtResource("1_1ygco")]
+
+[node name="SMuL" parent="." instance=ExtResource("2_5idh8")]
